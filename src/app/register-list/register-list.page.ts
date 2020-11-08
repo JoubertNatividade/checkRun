@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoryService } from 'src/services/CategoryService';
-import { Category } from 'src/models/Category';
 import { List } from 'src/models/List';
 import { ListService } from 'src/services/ListService';
 import { UserService } from 'src/services/UserServices';
@@ -69,14 +67,16 @@ export class RegisterListPage implements OnInit {
 
     await alert.present();
   }
+
   removerQuestao(index){
     this.listq.questions.splice(index,1);
   }
+
   saveLista(){
     this._listService.cadastrar(this.listq).subscribe(response => {
       console.log(response);
     })
-    console.log(this.listq);
+    this._router.navigate(['/show-list']);
   }
   
   setDays(day:number){

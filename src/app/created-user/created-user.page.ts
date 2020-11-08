@@ -3,7 +3,6 @@ import { User } from 'src/models/User';
 import { UserService } from 'src/services/UserServices';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { report } from 'process';
 
 @Component({
   selector: 'app-created-user',
@@ -18,7 +17,10 @@ export class CreatedUserPage implements OnInit {
     private _userService: UserService,
     private _menu: MenuController,
     private _router: Router, 
-    )    {this._menu.enable(false); }
+  )    
+  {
+    this._menu.enable(false); 
+  }
 
   ngOnInit() {
   }
@@ -27,7 +29,7 @@ export class CreatedUserPage implements OnInit {
     this._userService.cadastrar(this.user).subscribe(response => {
       return response
     })
-    
+    this._router.navigate(['/login']);
   }
 
   termosCondicoes(){

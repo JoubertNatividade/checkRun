@@ -1,3 +1,5 @@
+import { List } from './List';
+
 export class User {
 
     public id: number = null;
@@ -6,5 +8,5 @@ export class User {
     public password: string = null;
     public confirmPassword: string = null;
 
-
+    public listqs: List[] = new Array<List>();
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { UserService } from 'src/services/UserServices';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
+    {
+      title: 'Inicio',
+      url: 'home',
+      icon: 'home'
+    }, 
     {
       title: 'Perfil',
       url: 'profile',
@@ -23,7 +30,7 @@ export class AppComponent implements OnInit {
       icon: 'add'
     },
     {
-      title: 'Mostrar Lista',
+      title: 'Minhas Listas',
       url: 'show-list',
       icon: 'list-circle'
     },
@@ -48,7 +55,10 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private _usuarioService: UserService,
+    private _menu: MenuController,
+    private _router: Router,
   ) {
     this.initializeApp();
   }
@@ -65,5 +75,11 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+
+  logout() {
+    this._usuarioService.logout();
+    this._menu.swipeGesture(false);
+    this._router.navigate(['/login']);
   }
 }

@@ -21,9 +21,12 @@ export class LoginServices implements ILoginService {
     constructor ( private _http : HttpClient){}
 
     login( { email, password }: Login): Observable<User> {
+
+        // VERIFICANDO SE OS CAMPOS FORAM PREENCHIDOS
         if(!email) throw new Error('Preencha o campo Email')
         if(!password) throw new Error('Preencha o campo Senha')
         
+        // FAZENDO LOGIN
         return this._http.post<User>(this.apiUrl,{email,password})
 
     }

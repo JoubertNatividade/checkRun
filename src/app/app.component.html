@@ -7,6 +7,10 @@
           <ion-list-header>Check&Run</ion-list-header>
           <ion-note></ion-note>
 
+          <ion-menu-toggle>
+            <ion-button (click)="logout();">Sair</ion-button>
+          </ion-menu-toggle>
+
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>

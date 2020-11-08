@@ -1,27 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>MINHA LISTA</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Minha Lista</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-grid>
-
-    <ion-row *ngIf="listq.length">
+    <!--Lista de listas do usuário-->
+    <ion-row *ngIf="listas.length > 0">
 
       <ion-col>
+
+        <ion-list>
+
+          <ion-item *ngFor="let lista of listas; let i = index">
+            <ion-label>
+              {{ lista }}
+            </ion-label>
         
+          </ion-item> 
+
+
+
+        </ion-list>
+
       </ion-col>
+   
+    </ion-row> 
 
-    </ion-row>
-
-    <!-- Botão Criar List -->
-    <ion-row *ngIf="listq.length == 0">
+    <!--Botão para criar um carro-->
+    <ion-row *ngIf="listas.length == 0">
 
       <ion-col>
-        <h5>Você ainda não tem listas cadastrada. </h5>
-        <ion-button (click)="cadastrarLista()" expand ="full">Criar Lista</ion-button>
+        <h2>Você ainda não possui listas. Cadastre agora!</h2>
+        <ion-button (click)="cadastrarLista();" expand="full">Cadastrar Lista</ion-button>
       </ion-col>
 
     </ion-row>

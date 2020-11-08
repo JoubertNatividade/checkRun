@@ -6,4 +6,6 @@ export interface IListService {
     atualizar(list : List): Observable<List>;
     excluir(list : List): void;
     retornarIdLista(list : List): void;
+    listar() : Promise<List[]>;
+    buscar(list_id: number) : Observable<List>;
 }

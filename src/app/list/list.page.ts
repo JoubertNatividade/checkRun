@@ -9,11 +9,11 @@ import { List } from 'src/models/List';
 })
 export class ListPage implements OnInit {
 
-  public listq: List[]= new Array<List>();
+  public listas: List[]= new Array<List>();
 
   constructor(
     private _router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
@@ -21,7 +21,6 @@ export class ListPage implements OnInit {
     this._router.navigate(['/register-list']) 
   }
 
-    
 
 
 }

@@ -2,26 +2,49 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>Mostrar Lista</ion-title>
+    <ion-title>Todas as Listas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-searchbar animated></ion-searchbar>
-  <p>LISTA 1</p> 
-  <p>LISTA 2</p> 
-  <p>LISTA 3</p> 
-  <p>LISTA 4</p> 
-  <p>LISTA 5</p> 
-  <p>LISTA 6</p> 
-  <p>LISTA 7</p> 
-  
-  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-</ion-content>
+  <ion-grid>
+    <!--Lista de listas do usuário-->
+    <ion-row *ngIf="listas.length > 0">
 
+      <ion-col>
+
+        <ion-list>
+
+          <ion-item *ngFor="let lista of listas; let i = index">
+            <ion-label>
+              {{ lista.name }}
+            </ion-label>
+            <ion-icon (click)="removerQuestao(i);"name="arrow-forward" slot="end"></ion-icon>
+            <ion-icon (click)="removerQuestao(i);" name="trash-outline"></ion-icon>
+          </ion-item> 
+
+
+
+        </ion-list>
+
+      </ion-col>
+   
+    </ion-row> 
+
+    <!--Botão para criar um carro-->
+    <ion-row *ngIf="listas.length == 0">
+
+      <ion-col>
+        <h2>Você ainda não possui listas. Cadastre agora!</h2>
+        <ion-button (click)="cadastrarLista();" expand="full">Cadastrar Lista</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+
+
+</ion-content>

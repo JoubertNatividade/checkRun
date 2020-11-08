@@ -6,4 +6,6 @@ export interface IUser {
     atualizar(user: User) : Observable<User>;
     logar(user: User) : void;
     retornarUsuarioLogado() : User;
-}
+    buscarUsuario(): Observable<User>;
+    logout(): void;
+}   
